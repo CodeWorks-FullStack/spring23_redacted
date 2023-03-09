@@ -58,7 +58,7 @@ export class Case {
               <h3>${this.ComputeDate}</h3>
             </div>
 
-            <textarea class="report" name="caseReport" id="caseReport" cols="30"
+            <textarea  onblur="app.casesController.saveCase()" class="report" name="caseReport" id="caseReport" cols="30"
               rows="10">${this.report}</textarea>`
     }
 

@@ -1,8 +1,10 @@
 import { appState } from "../AppState.js";
+import { Case } from "../Models/Case.js";
 import { Pop } from "../Utils/Pop.js";
 import { saveState } from "../Utils/Store.js";
 
 class CasesService {
+
 
 
     setActive(caseId) {
@@ -37,6 +39,17 @@ class CasesService {
         appState.emit('activeCase')
         saveState('caseFiles', appState.cases)
         // console.log(activeCase);
+    }
+
+    createCase(newReportData) {
+        // console.log(newReportData);
+        let newReport = new Case(newReportData)
+        appState.cases.push(newReport)
+        appState.emit('cases')
+        saveState('caseFiles', appState.cases)
+        newReport.unlocked = true
+        appState.activeCase = newReport
+        console.log(appState.cases);
     }
 }
 

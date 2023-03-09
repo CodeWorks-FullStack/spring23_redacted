@@ -30,6 +30,24 @@
 
       <section class="row">
         <div class="col-4 elevation-5">
+
+          <section class="row">
+            <h5>Create Report</h5>
+            <form class="d-flex flex-wrap" onsubmit="app.casesController.createCase()">
+              <input type="text" required minlength="1" maxlength="2" class="form-control w-100" name="agency"
+                id="agency" placeholder="Agency Icon">
+              <select required class="form- w-50" name="clearance" id="clearance">
+                <option value="none" selected>None</option>
+                <option value="secret">Secret</option>
+                <option value="top secret">Top Secret</option>
+                <option value="super duper secret">🍲</option>
+              </select>
+              <input required type="date" class="form-control w-50" name="date" id="date">
+              <button class="btn btn-primary w-100" type="submit" title="create report"><i
+                  class="mdi mdi-plus"></i></button>
+            </form>
+          </section>
+
           <section class="row p-2" id="cases">
             <!-- STUB case list template -->
             <!-- <div class="col-12 bg-primary">
@@ -46,6 +64,7 @@
               </div>
             </div> -->
           </section>
+
         </div>
 
         <div class="col-8">

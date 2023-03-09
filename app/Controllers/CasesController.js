@@ -1,5 +1,6 @@
 import { appState } from "../AppState.js"
 import { casesService } from "../Services/CasesService.js"
+import { getFormData } from "../Utils/FormHandler.js"
 import { Pop } from "../Utils/Pop.js"
 import { setHTML } from "../Utils/Writer.js"
 
@@ -32,6 +33,7 @@ export class CasesController {
         // console.log('hello from the cases controller')
         _drawCases()
         appState.on('activeCase', _drawActive)
+        appState.on('cases', _drawCases)
     }
 
     setActive(caseId) {
@@ -46,6 +48,8 @@ export class CasesController {
             input = await Pop.prompt('Password? Please verify your clearance level.', true)
         }
         casesService.unlockCase(input)
+        // @ts-ignore
+        document.querySelector('.report').focus()
     }
 
     saveCase() {
@@ -56,6 +60,19 @@ export class CasesController {
         console.log(report.value);
         // @ts-ignore
         casesService.saveCase(report.value)
+    }
+
+    createCase() {
+        console.log('creating case');
+        window.event.preventDefault()
+        // NOTE target the onsubmit
+        let form = event.target
+        // NOTE get form data creates an object with key:value pairs between the name of the input and the input value
+        let newReport = getFormData(form)
+        console.log(newReport);
+        casesService.createCase(newReport)
+        // @ts-ignore
+        document.querySelector('.report').focus()
     }
 
 }

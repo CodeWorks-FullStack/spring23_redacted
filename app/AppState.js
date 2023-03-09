@@ -3,6 +3,7 @@ import { Value } from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
 import { loadState } from "./Utils/Store.js"
+import { wordList } from "./WordList.js"
 
 class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
@@ -33,7 +34,7 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Case').Case|null} */
   activeCase = null
 
-  classifiedWords = ['codeworks', 'alien', 'star', 'bitcoin', 'ufo', 'mole', 'hairy', 'flying', 'roof', 'full-stack', 'classroom', 'humanoid', 'camera', 'agent', 'rice-krispy']
+  classifiedWords = ['codeworks', 'alien', 'star', 'bitcoin', 'ufo', 'mole', 'hairy', 'flying', 'roof', 'full-stack', 'classroom', 'humanoid', 'camera', 'agent', 'rice-krispy', ...wordList]
 
   clearanceLevels = {
     'none': '',
